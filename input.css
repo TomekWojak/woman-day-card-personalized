@@ -1,0 +1,50 @@
+@import "tailwindcss";
+*::selection {
+	background-color: #7a1e2c;
+}
+@theme {
+	--font-hacker: "Fira Code", monospace;
+}
+
+::-webkit-scrollbar {
+	width: 3px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #7a1e2c; /* mocny róż/neon */
+	border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+	background-color: #1a0008; /* ciemne tło jak pasek terminala */
+}
+
+.accent {
+	display: inline-block;
+	margin-top: 0.5rem;
+}
+@keyframes dotPulse {
+	0% {
+		transform: scale(0.3);
+		opacity: 0.4;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@keyframes roseMove {
+	0% {
+		transform: rotateZ(20deg);
+	}
+	100% {
+		transform: rotateZ(-20deg);
+	}
+}
+canvas {
+	position: absolute;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	width: 100%;
+	margin: 0;
+	z-index: -1;
+	transition: opacity 2s;
+}

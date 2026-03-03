@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+    <script type="module" src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body class="flex overflow-hidden relative justify-center flex-col items-center bg-[#0D0F14] w-full min-h-screen">
+
+    <img src="./rose-7-svgrepo-com.svg"
+        class="absolute w-16 md:w-32 left-4 md:left-20 top-16 md:top-32 opacity-8 rotate-12 pointer-events-none select-none filter grayscale contrast-75">
+    <img src="./rose-illustration-4-svgrepo-com.svg"
+        class="absolute w-28 md:w-48 right-2 md:right-10 top-1/3 opacity-8 -rotate-6 blur-[1px] pointer-events-none select-none filter grayscale contrast-80">
+
+    <div class="terminal relative h-80 md:h-120 
+        border border-[rgba(230,230,218,0.1)] 
+        w-[95%] max-w-220 
+        bg-[#16191F]/95 backdrop-blur-sm 
+        rounded-lg 
+        text-[#E6E1D9] 
+        shadow-[0_30px_70px_rgba(0,0,0,0.7)]">
+
+        <div class="terminal-top 
+            rounded-tl-lg rounded-tr-lg 
+            font-hacker relative flex items-center gap-1.5 
+            px-2 md:px-4 h-[20%] max-h-10 w-full 
+            bg-[#11141B] 
+            border-b border-[rgba(230,230,218,0.08)]">
+
+            <div class="w-3 aspect-square rounded-full bg-[#7A1E2C]"></div>
+            <div class="w-3 aspect-square rounded-full bg-[#C2A14A]"></div>
+            <div class="w-3 aspect-square rounded-full bg-[#3A3A44]"></div>
+
+            <p class="text-center text-xs md:text-sm w-full absolute left-0 top-1/2 -translate-y-1/2 tracking-wide">
+                Analiza psychologiczna
+            </p>
+        </div>
+
+        <div class="terminal-body h-[80%] flex flex-col items-start gap-2 
+            text-[0.9rem] md:text-[1rem] lg:text-[1.15rem] 
+            overflow-y-auto font-hacker p-2 md:p-4">
+
+            <p>Data: 8 marca 2026 - Dzień Kobiet</p>
+            <p>Czas: <span class="currentTime"></span></p>
+            <p>Wpisz <span class="text-[#7A1E2C] font-semibold">start</span>, aby rozpocząć.</p>
+
+            <div class="input-box flex justify-between items-center gap-2 w-full">
+                <p class="pointer-events-none select-none md:text-lg text-[#7A1E2C]">></p>
+                <input autocomplete="off" autocapitalize="off" spellcheck="false" type="text" id="entry"
+                    class="active w-full h-6 bg-transparent caret-[#7A1E2C] focus-visible:outline-0 outline-0 font-hacker text-[#E6E1D9]">
+            </div>
+
+        </div>
+
+        <div class="hidden opacity-0 absolute transition-all duration-500 flex-col justify-between p-4 
+            top-0 right-0 md:top-1/2 md:left-1/2 md:right-[unset] md:-translate-1/2 code-popup
+            bg-[#16191F]
+            w-[70%] max-w-100 min-h-[60%]
+            border border-[rgba(230,230,218,0.15)]
+            rounded-lg
+            text-[#E6E1D9]
+            shadow-[0_40px_90px_rgba(0,0,0,0.8)]">
+
+            <h2 class="text-center font-hacker text-[clamp(0.6rem,calc(0.4rem+2.5vw),1.3rem)] mb-2">
+                Dostęp do zamkniętych akt
+            </h2>
+
+            <div class="input-btn-box flex flex-col h-full justify-end">
+                <input type="password" id="accesInput" class="mb-7 bg-[#111419]
+                    w-full h-10 sm:h-12 rounded-lg
+                    caret-[#C2A14A]
+                    outline-[#7A1E2C] outline-1
+                    font-hacker px-4 text-[#E6E1D9]">
+
+                <button class="
+                    px-6 py-2 sm:py-3
+                    rounded-lg w-full
+                    text-sm tracking-wide
+                    bg-linear-to-r from-[#7A1E2C] to-[#C2A14A]
+                    text-black
+                    shadow-[0_0_25px_rgba(158,27,50,0.25)]
+                    active:scale-95
+                    transition-transform duration-150
+                    font-hacker cursor-pointer">
+                    Otwórz akta
+                </button>
+
+                <p
+                    class="hidden text-xs sm:text-sm md:text-[0.95rem] mt-3 text-center text-[#8B0000] font-hacker font-semibold">
+                    Błąd: dostęp odrzucony.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <button id="send-btn" class="bg-linear-to-r from-[#cf384f] to-[#C2A14A] 
+        text-white
+        mt-3 px-3 py-2 font-hacker w-[50%] rounded-lg 
+        shadow-[0_0_25px_rgba(158,27,50,0.35),inset_0_0_10px_rgba(255,255,255,0.05)]
+        active:scale-90 
+        transition-transform duration-300">
+        Kontynuuj
+    </button>
+
+</body>
+
+<audio id="clickSound" src="./emotional-and-memorable-piano-music.mp3"></audio>
+<canvas id="canvas"></canvas>
+<div class="blurred-popup opacity-0 transition-opacity hidden absolute inset-0 w-full h-full backdrop-blur-sm">
+    <div class="flex pointer-events-none select-none transition-opacity duration-1000 img-box w-[80%] text-center max-w-110 bg-[#16191F] p-5 flex-col items-center border border-[rgba(230,230,218,0.1)]
+ absolute left-1/2 top-1/2 -translate-1/2 shadow-[0_0_20px_rgba(255,77,109,0.05)]
+text-[#E6E1D9] rounded-xl
+">
+        <h1 class="font-hacker mb-5 text-sm sm:text-lg lg:text-[1.3rem]">Wszystkiego najlepszego z okazji Dnia
+            Kobiet!
+            💐🌸💕</h1>
+        <img src="./1771457846912.jpg" class="brightness-85 rounded-xl w-full" alt="">
+    </div>
+</div>
+</body>
+
+</html>
