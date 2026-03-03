@@ -210,141 +210,153 @@ let currentStep = 0;
 
 const handleInput = () => {
 	const input = document.querySelector(".active");
-	if (!input) return;
-
 	const command = input.value.trim().toLowerCase();
 
-	if (currentStep === 0 && command === "start") {
-		lockInput();
-		currentStep = 1;
-		launchFirstStep();
+	if (input.value === "") {
+		return;
 	}
-	// PYTANIE 1
-	else if (currentStep === 1 && command === "a") {
-		lockInput();
-		answer1 = "Osądzamy zachowania nie rozumiejąc kontekstu";
-		currentStep = 2;
-		launchSecondStep();
-	} else if (currentStep === 1 && command === "b") {
-		lockInput();
-		answer1 = "Samokontrola to przywilej tych którzy mogą ufać przyszłości";
-		currentStep = 2;
-		launchSecondStep();
-	} else if (currentStep === 1 && command === "c") {
-		lockInput();
-		answer1 = "Nie ma czegoś takiego jak obiektywna ocena moralna";
-		currentStep = 2;
-		launchSecondStep();
-	}
-	// PYTANIE 2
-	else if (currentStep === 2 && command === "a") {
-		lockInput();
-		answer2 = "Empatia to przełącznik - da się wyłączyć";
-		currentStep = 3;
-		launchThirdStep();
-	} else if (currentStep === 2 && command === "b") {
-		lockInput();
-		answer2 = "Oni nigdy jej nie mieli, tylko udawali";
-		currentStep = 3;
-		launchThirdStep();
-	} else if (currentStep === 2 && command === "c") {
-		lockInput();
-		answer2 = "To spektrum - wszyscy mamy różny poziom";
-		currentStep = 3;
-		launchThirdStep();
-	}
-	// PYTANIE 3
-	else if (currentStep === 3 && command === "a") {
-		lockInput();
-		answer3 = "Ludzie są źli z natury";
-		currentStep = 4;
-		launchFourthStep();
-	} else if (currentStep === 3 && command === "b") {
-		lockInput();
-		answer3 =
-			"Wszyscy jesteśmy potencjalnymi potworami w odpowiednich warunkach";
-		currentStep = 4;
-		launchFourthStep();
-	} else if (currentStep === 3 && command === "c") {
-		lockInput();
-		answer3 = "Nie jesteśmy tak dobrzy jak nam się wydaje";
-		currentStep = 4;
-		launchFourthStep();
-	}
-	// PYTANIE 4
-	else if (currentStep === 4 && command === "a") {
-		lockInput();
-		answer4 = "Biologia nie jest wymówką - odpowiedzialność pozostaje";
-		currentStep = 5;
-		launchFifthStep();
-	} else if (currentStep === 4 && command === "b") {
-		lockInput();
-		answer4 = "Nie można być złym za coś czego się nie odczuwa";
-		currentStep = 5;
-		launchFifthStep();
-	} else if (currentStep === 4 && command === "c") {
-		lockInput();
-		answer4 = "To zależy - intelekt może zastąpić empatię w rozumieniu krzywdy";
-		currentStep = 5;
-		launchFifthStep();
-	}
-	// PYTANIE 5
-	else if (currentStep === 5 && command === "a") {
-		lockInput();
-		answer5 = "Jesteśmy tchórzami";
-		currentStep = 6;
-		launchSixStep();
-	} else if (currentStep === 5 && command === "b") {
-		lockInput();
-		answer5 = "Społeczeństwo nas depersonalizuje";
-		currentStep = 6;
-		launchSixStep();
-	} else if (currentStep === 5 && command === "c") {
-		lockInput();
-		answer5 = "Dobro nie jest naturalne - wymaga świadomej decyzji";
-		currentStep = 6;
-		launchSixStep();
-	}
-	// PYTANIE 6
-	else if (currentStep === 6 && command === "a") {
-		lockInput();
-		answer6 = "Nie - to tylko okoliczności nas różnią";
-		currentStep = 7;
-		launchSeventhStep();
-	} else if (currentStep === 6 && command === "b") {
-		lockInput();
-		answer6 = "Różnica jest iluzją którą sobie tworzymy dla komfortu";
-		currentStep = 7;
-		launchSeventhStep();
-	} else if (currentStep === 6 && command === "c") {
-		lockInput();
-		answer6 = "Tak - mordercy to inna kategoria ludzi";
-		currentStep = 7;
-		launchSeventhStep();
-	}
-	// pytanie 7
-	else if (currentStep === 7 && command === "a") {
-		lockInput();
-		answer7 = "Że jestem niebezpieczna";
-		currentStep = 8;
-		launchEightStep();
-	} else if (currentStep === 7 && command === "b") {
-		lockInput();
-		answer7 = "Że mam odwagę patrzeć tam gdzie inni uciekają";
-		currentStep = 8;
-		launchEightStep();
-	} else if (currentStep === 7 && command === "c") {
-		lockInput();
-		answer7 = "Że mój umysł szuka prawdy, nie komfortu";
-		currentStep = 8;
-		launchEightStep();
-	} else if (currentStep === 8 && command === "dalej") {
-		lockInput();
-		currentStep === 9;
-		launchNineStep();
+
+	if (
+		input.value === "a" ||
+		input.value === "b" ||
+		input.value === "c" ||
+		input.value === "start"
+	) {
+		sendButton?.setAttribute("disabled", "true");
+
+		if (currentStep === 0 && command === "start") {
+			lockInput();
+			currentStep = 1;
+			launchFirstStep();
+		}
+		// PYTANIE 1
+		else if (currentStep === 1 && command === "a") {
+			lockInput();
+			answer1 = "Osądzamy zachowania nie rozumiejąc kontekstu";
+			currentStep = 2;
+			launchSecondStep();
+		} else if (currentStep === 1 && command === "b") {
+			lockInput();
+			answer1 = "Samokontrola to przywilej tych którzy mogą ufać przyszłości";
+			currentStep = 2;
+			launchSecondStep();
+		} else if (currentStep === 1 && command === "c") {
+			lockInput();
+			answer1 = "Nie ma czegoś takiego jak obiektywna ocena moralna";
+			currentStep = 2;
+			launchSecondStep();
+		}
+		// PYTANIE 2
+		else if (currentStep === 2 && command === "a") {
+			lockInput();
+			answer2 = "Empatia to przełącznik - da się wyłączyć";
+			currentStep = 3;
+			launchThirdStep();
+		} else if (currentStep === 2 && command === "b") {
+			lockInput();
+			answer2 = "Oni nigdy jej nie mieli, tylko udawali";
+			currentStep = 3;
+			launchThirdStep();
+		} else if (currentStep === 2 && command === "c") {
+			lockInput();
+			answer2 = "To spektrum - wszyscy mamy różny poziom";
+			currentStep = 3;
+			launchThirdStep();
+		}
+		// PYTANIE 3
+		else if (currentStep === 3 && command === "a") {
+			lockInput();
+			answer3 = "Ludzie są źli z natury";
+			currentStep = 4;
+			launchFourthStep();
+		} else if (currentStep === 3 && command === "b") {
+			lockInput();
+			answer3 =
+				"Wszyscy jesteśmy potencjalnymi potworami w odpowiednich warunkach";
+			currentStep = 4;
+			launchFourthStep();
+		} else if (currentStep === 3 && command === "c") {
+			lockInput();
+			answer3 = "Nie jesteśmy tak dobrzy jak nam się wydaje";
+			currentStep = 4;
+			launchFourthStep();
+		}
+		// PYTANIE 4
+		else if (currentStep === 4 && command === "a") {
+			lockInput();
+			answer4 = "Biologia nie jest wymówką - odpowiedzialność pozostaje";
+			currentStep = 5;
+			launchFifthStep();
+		} else if (currentStep === 4 && command === "b") {
+			lockInput();
+			answer4 = "Nie można być złym za coś czego się nie odczuwa";
+			currentStep = 5;
+			launchFifthStep();
+		} else if (currentStep === 4 && command === "c") {
+			lockInput();
+			answer4 =
+				"To zależy - intelekt może zastąpić empatię w rozumieniu krzywdy";
+			currentStep = 5;
+			launchFifthStep();
+		}
+		// PYTANIE 5
+		else if (currentStep === 5 && command === "a") {
+			lockInput();
+			answer5 = "Jesteśmy tchórzami";
+			currentStep = 6;
+			launchSixStep();
+		} else if (currentStep === 5 && command === "b") {
+			lockInput();
+			answer5 = "Społeczeństwo nas depersonalizuje";
+			currentStep = 6;
+			launchSixStep();
+		} else if (currentStep === 5 && command === "c") {
+			lockInput();
+			answer5 = "Dobro nie jest naturalne - wymaga świadomej decyzji";
+			currentStep = 6;
+			launchSixStep();
+		}
+		// PYTANIE 6
+		else if (currentStep === 6 && command === "a") {
+			lockInput();
+			answer6 = "Nie - to tylko okoliczności nas różnią";
+			currentStep = 7;
+			launchSeventhStep();
+		} else if (currentStep === 6 && command === "b") {
+			lockInput();
+			answer6 = "Różnica jest iluzją którą sobie tworzymy dla komfortu";
+			currentStep = 7;
+			launchSeventhStep();
+		} else if (currentStep === 6 && command === "c") {
+			lockInput();
+			answer6 = "Tak - mordercy to inna kategoria ludzi";
+			currentStep = 7;
+			launchSeventhStep();
+		}
+		// pytanie 7
+		else if (currentStep === 7 && command === "a") {
+			lockInput();
+			answer7 = "Że jestem niebezpieczna";
+			currentStep = 8;
+			launchEightStep();
+		} else if (currentStep === 7 && command === "b") {
+			lockInput();
+			answer7 = "Że mam odwagę patrzeć tam gdzie inni uciekają";
+			currentStep = 8;
+			launchEightStep();
+		} else if (currentStep === 7 && command === "c") {
+			lockInput();
+			answer7 = "Że mój umysł szuka prawdy, nie komfortu";
+			currentStep = 8;
+			launchEightStep();
+		} else if (currentStep === 8 && command === "dalej") {
+			lockInput();
+			currentStep = 9;
+			launchNineStep();
+		}
 	}
 };
-const typeText = (textToType, target, speed = 35) => {
+const typeText = (textToType, target, speed = 10) => {
 	return new Promise((resolve) => {
 		let currValue = 0;
 		const interval = setInterval(() => {
@@ -360,9 +372,6 @@ const typeText = (textToType, target, speed = 35) => {
 };
 
 const launchFirstStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const text3 = createText();
@@ -417,12 +426,10 @@ const launchFirstStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 
 const launchSecondStep = async () => {
-	if (processing) return;
-	processing = true;
 	const text1 = createText();
 	const question = createText();
 	const a1 = createText();
@@ -439,12 +446,9 @@ const launchSecondStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 const launchThirdStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const question = createText();
 	const a1 = createText();
@@ -466,13 +470,10 @@ const launchThirdStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 
 const launchFourthStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const question = createText();
@@ -498,13 +499,10 @@ const launchFourthStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 
 const launchFifthStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const question = createText();
@@ -524,13 +522,10 @@ const launchFifthStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 
 const launchSixStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const question = createText();
@@ -553,12 +548,9 @@ const launchSixStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 const launchSeventhStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const question = createText();
@@ -578,12 +570,9 @@ const launchSeventhStep = async () => {
 	terminalBody.append(createInput());
 
 	focusInputAutomatically();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 const launchEightStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const text3 = createText();
@@ -599,13 +588,10 @@ const launchEightStep = async () => {
 	typeText("Kompiluję profil psychologiczny (może to chwilę potrwać)", text4);
 	await wait(2000);
 
-	runAnalysis();
-	processing = false;
+	await runAnalysis();
+	sendButton?.removeAttribute("disabled");
 };
 const launchNineStep = async () => {
-	if (processing) return;
-	processing = true;
-
 	const text1 = createText();
 	const text2 = createText();
 	const text3 = createText();
@@ -629,7 +615,7 @@ const launchNineStep = async () => {
 	showFinalImg();
 	Draw();
 	audio.play();
-	processing = false;
+	sendButton?.removeAttribute("disabled");
 };
 
 const showCodePopup = () => {
