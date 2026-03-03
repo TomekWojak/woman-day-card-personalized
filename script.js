@@ -217,10 +217,10 @@ const handleInput = () => {
 	}
 
 	if (
-		input.value === "a" ||
-		input.value === "b" ||
-		input.value === "c" ||
-		input.value === "start"
+		input.value.trim() === "a" ||
+		input.value.trim() === "b" ||
+		input.value.trim() === "c" ||
+		input.value.trim() === "start"
 	) {
 		sendButton?.setAttribute("disabled", "true");
 
