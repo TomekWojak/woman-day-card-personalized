@@ -84,6 +84,6 @@ It demonstrates how simple user input flow can be combined with AI-generated out
 
 ## Gallery
 
-![startScreen](https://i.imgur.com/placeholder1.png)
-![questionScreen](https://i.imgur.com/placeholder2.png)
-![resultScreen](https://i.imgur.com/placeholder3.png)
+![startScreen](https://i.imgur.com/cyaVz8Z.png)
+![questionScreen](https://i.imgur.com/Xkj7fN3.png)
+![resultScreen](https://i.imgur.com/57znn5d.png)
