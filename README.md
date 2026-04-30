@@ -38,6 +38,7 @@ The main goal of the project is to demonstrate:
 - integrating AI for text generation based on structured input
 
 <br>
+
 ## Quiz Flow
 
 - User starts the quiz by typing **"start"**
