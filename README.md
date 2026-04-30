@@ -72,7 +72,6 @@ The main goal of the project is to demonstrate:
 - Tracks current question index
 - Stores all user answers in order
 - Controls quiz start and completion state
-- Prevents restarting in the middle of the flow
   <br>
   <br>
 
